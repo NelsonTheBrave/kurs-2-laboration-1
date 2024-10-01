@@ -1,7 +1,7 @@
 package org.example;
 
 public class Product {
-    private String name;
+    String name;
     double price;
     int quantity;
 

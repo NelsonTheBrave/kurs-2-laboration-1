@@ -4,6 +4,14 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class FridayDiscount extends BaseDiscount {
+    public FridayDiscount() {
+        super();
+    }
+
+    public FridayDiscount(Discount nextDiscount) {
+        super(nextDiscount);
+    }
+
     @Override
     protected boolean isApplicable(Product product) {
         return LocalDate.now().getDayOfWeek().equals(DayOfWeek.FRIDAY);
@@ -15,15 +23,11 @@ public class FridayDiscount extends BaseDiscount {
     }
 
     @Override
-    public double apply(Product product) {
-        if (isApplicable(product)) {
-            return calculateDiscount(product);
-        }
-        return nextDiscount.apply(product);
-    }
-
-    @Override
-    public String getDescription(Product product) {
+    protected String description(Product product) {
         return "Friday discount 10%";
     }
+//    @Override
+//    public String getDescription(Product product) {
+//        return "Friday discount 10%";
+//    }
 }
